@@ -33,7 +33,6 @@ public class GraphColoring {
         //System.out.println(filename);
         Graph gh=null;
         try {
-            
             Scanner fin=new Scanner(new File(filename));
             while(fin.hasNextLine()) {
                 String line =fin.nextLine();
