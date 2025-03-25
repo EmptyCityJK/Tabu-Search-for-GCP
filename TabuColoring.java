@@ -66,9 +66,10 @@ public class TabuColoring {
       // 执行禁忌搜索
       public int[] search() {
             int iter = 1; // 迭代次数
-            int maxIterations = 10000; // 最大迭代次数
+            // int maxIterations = 1000000000; // 最大迭代次数
             int bestConflicts = calculateConflicts(bestSol); // 最佳解的冲突数
-            while(iter < maxIterations && bestConflicts > 0) {
+            while(bestConflicts > 0) {
+                  System.out.println(iter);
                   int bestMoveV = -1; // 最佳移动的顶点
                   int bestMoveC = -1; // 最佳移动的颜色
                   int bestMoveScore = Integer.MIN_VALUE; // 最佳移动的分数
@@ -104,7 +105,7 @@ public class TabuColoring {
                   // 执行move(bestMoveV, c1, c2)
                   int curColor = sol[bestMoveV];
                   move(bestMoveV, curColor, bestMoveC);
-                  int newConf = oldConf - bestConflicts;
+                  int newConf = oldConf - bestMoveScore;
                   // 更新禁忌表
                   tabu[bestMoveV][curColor] = newConf + random.nextInt(curColor);
                   // 更新解
